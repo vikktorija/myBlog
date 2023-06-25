@@ -1,11 +1,11 @@
 import { Link, useNavigate } from 'react-router-dom';
 import NewsCard from '../components/Cards';
-import { useContext, useState } from 'react';
-import { postContext } from '../App';
+import { useSelector } from 'react-redux';
+
 
 export const Blog = () => {
+    const posts = useSelector(state => state.posts);
     const navigate = useNavigate();
-    const {posts} = useContext(postContext)
 
     return (
         <div>

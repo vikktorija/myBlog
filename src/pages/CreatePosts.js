@@ -1,45 +1,28 @@
-import { useState, createContext, useContext } from "react";
-import { postContext } from '../App';
 import { Navigate, useNavigate } from "react-router-dom";
-import SinglePostPage from "../components/SinglePostPage";
-import { news } from "../data/NewsCard";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addPost } from "../actions";
 
-  
 function CreatePost () {
+    const dispatch = useDispatch();
+    const currentDate = new Date().toLocaleString();
     const navigate = useNavigate()
-    const { posts, setPosts } = useContext(postContext)
 
     const [ post, setPost ] = useState({
-        id: posts.length + 1,
         image: "/img/img1.jpg",
-        date: '',
+        date: currentDate,
         title: '',
         text: ''
     })
 
     const CreatePostHandler = () => {
-        setPosts(prev => {
-            return [...prev, post]
-        })
-    
-        alert('Add a NEW post!')
-    
+        dispatch(addPost(post));
+
+        alert('Add a NEW post!');
+
         setTimeout(() => {
             navigate('/blog')
         }, 1500)
-
-        console.log(posts)
-    }
-
-    const handleAddPost =(post) => {
-        setPosts(prev => [...prev, post]);
-        post.push(setPosts)
-      return (
-        <div>
-          <CreatePost onAddPost={handleAddPost} />
-          <SinglePostPage news={news} />
-        </div>
-      );
     }
 
     const inputHandler = (e) => {

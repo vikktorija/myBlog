@@ -1,14 +1,13 @@
-import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import BackButton from './BackButton';
-import { useContext } from 'react';
-import { postContext } from '../App';
+import { useSelector } from 'react-redux';
 
 
 export const SinglePostPage = () => {
-    const id = useLocation().pathname.split('/')[2]
-    const {posts} = useContext(postContext)
-    const currentPost = posts[+id - 1]
+    const id = useLocation().pathname.split('/')[2];
+    const posts = useSelector(state => state.posts);
+    const currentPost = posts.find(post => post.id === Number(id));
+  
 
     return(
         <>
