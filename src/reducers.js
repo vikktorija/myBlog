@@ -11,11 +11,11 @@ const initialState  = {
         return {
           ...state,
           posts: [...state.posts, newPost]
-        };
-      case 'SET_POSTS':
+        }
+      case 'DELETE_POST':
         return {
           ...state,
-          posts: action.payload
+          posts: state.posts.filter(post => post.id !== newPost),
         };
       default:
         return state;

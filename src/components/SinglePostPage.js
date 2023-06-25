@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 export const SinglePostPage = () => {
     const id = useLocation().pathname.split('/')[2];
-    const posts = useSelector(state => state.posts);
+    const {posts} = useSelector(state => state.posts);
     const currentPost = posts.find(post => post.id === Number(id));  
 
     return(

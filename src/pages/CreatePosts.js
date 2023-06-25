@@ -7,7 +7,7 @@ function CreatePost () {
     const dispatch = useDispatch();
     const currentDate = new Date().toLocaleString();
     const navigate = useNavigate()
-
+    
     const [ post, setPost ] = useState({
         image: "/img/img1.jpg",
         date: currentDate,
