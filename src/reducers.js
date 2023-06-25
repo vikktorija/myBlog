@@ -1,13 +1,16 @@
+import news from './data/News'
+
 const initialState  = {
-    posts: [],
+    posts: news,
   };
   
   export const postReducer = (state = initialState , action) => {
     switch (action.type) {
       case 'ADD_POST':
+        const newPost = action.payload;
         return {
           ...state,
-          posts: [...state.posts, action.payload]
+          posts: [...state.posts, newPost]
         };
       case 'SET_POSTS':
         return {

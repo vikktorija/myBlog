@@ -2,12 +2,10 @@ import { useLocation } from "react-router-dom";
 import BackButton from './BackButton';
 import { useSelector } from 'react-redux';
 
-
 export const SinglePostPage = () => {
     const id = useLocation().pathname.split('/')[2];
     const posts = useSelector(state => state.posts);
-    const currentPost = posts.find(post => post.id === Number(id));
-  
+    const currentPost = posts.find(post => post.id === Number(id));  
 
     return(
         <>

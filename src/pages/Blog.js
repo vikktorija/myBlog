@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 
 export const Blog = () => {
-    const posts = useSelector(state => state.posts);
+    const {posts} = useSelector(state => state.posts);
     const navigate = useNavigate();
 
     return (
